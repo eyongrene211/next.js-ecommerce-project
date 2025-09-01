@@ -69,7 +69,7 @@ const page = () => {
 
       {/* main body section */}
 
-      <div className="  flex flex-col bg-white  text-black  justify-center items-center pt-10">
+      <div className="  flex flex-col    justify-center items-center pt-10">
         <div className="flex   gap-2 justify-center items-center">
         <Bolt  size={40} />
         <h3> MOST POPULAR ADVENTURE</h3>
