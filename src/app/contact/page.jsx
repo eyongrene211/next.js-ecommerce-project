@@ -7,7 +7,7 @@ import { toast, ToastContainer }                                   from 'react-t
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useRef }                                           from 'react';
 import emailjs                                                     from '@emailjs/browser';
-
+import { Button }                                                  from "@/components/ui/button"
 
 const page = () => {
     const form = useRef();
@@ -87,6 +87,7 @@ const page = () => {
                             className="w-full border peer border-gray-700 px-4 pt-5 pb-2 placeholder-transparent focus:border-blue-500 focus:ring-2 outline-none " name="user_message" />
                             <label className="absolute left-4 top-2.5 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-500  focus:border-blue-500 focus:ring-blue"> Your Message</label>
                         </div>
+                        <Button variant="outline">Send Message</Button>
                         <button
                             type="submit"
                             tabIndex={0}
