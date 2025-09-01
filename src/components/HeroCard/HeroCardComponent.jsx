@@ -19,7 +19,7 @@ const HeroCardComponent = ({
 
   return (
     <>
-      <div className=' bg-white p-5 text-black flex flex-col justify-center items-center'>
+      <div className='  p-5 text-black flex flex-col justify-center items-center'>
         {/** Creating card content */}
         <div className='flex flex-col gap-3 w-[450px] p-[10px_10px_20px_10px] rounded-2xl shadow-2xl relative'>
           <img src={item.imageUrl} alt='card image' className=' rounded-2xl w-[430px] h-[300px] ' />
