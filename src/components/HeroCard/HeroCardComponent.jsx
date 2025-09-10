@@ -13,18 +13,18 @@ const HeroCardComponent = ({
   const filledStarColor = '#ffe014';
   const { cartItems, toggleItem } = useStoreCart();
   const { selectedFavIds, toggleFavItemId } = useStoreFav();
-  const emptyStarColor = '#9c9b98';
+  // const emptyStarColor = '#9c9b98';
   // let isClicked = false;
   // const [isClicked, SetIsClicked] = useState(false);
 
   return (
     <>
-      <div className='  p-5 text-black flex flex-col justify-center items-center'>
+      <div className='  p-5  flex flex-col justify-center  items-center'>
         {/** Creating card content */}
-        <div className='flex flex-col gap-3 w-[450px] p-[10px_10px_20px_10px] rounded-2xl shadow-2xl relative'>
+        <div className='flex flex-col gap-3  w-[450px] p-[10px_10px_20px_10px] rounded-2xl shadow-2xl relative'>
           <img src={item.imageUrl} alt='card image' className=' rounded-2xl w-[430px] h-[300px] ' />
 
-          <div className=' w-full h-[230px]  absolute '>
+          <div className=' w-full h-[230px]   absolute '>
             <Link href={`/events/${item.slug}`} >
               
             <div className='w-[430px] h-[300px] bg-[#00000058] rounded-2xl    text-white relative '>
@@ -88,39 +88,39 @@ const HeroCardComponent = ({
                   return (
                     <StarHalf
                       key={`half-${index}`}
-                      color={item.filledStarColor}
-                      fill={item.filledStarColor}
+                      color={''}
+                      fill={''}
                     />
                   );
                 }
 
                 //condition if bar not full and not half then if must be empty
                 return (
-                  <Star key={`empty-${item.id}`} color={item.emptyStarColor} fill={item.emptyStarColor} />
+                  <Star key={`empty-${item.id}`} color={''} fill={''} />
                 );
               })}
             </div>
-            <span className='text-gray-500 font-bold'>4.8</span>
-            <span className='text-gray-500'>({item.reviewNo} reviews)</span>
+            <span className=' font-bold'>4.8</span>
+            <span className=''>({item.reviewNo} reviews)</span>
           </div>
 
           <div className='flex items-center gap-8'>
             <div className='flex items-center gap-2'>
-              <Clock4 className='text-gray-500' />
-              <span className='text-gray-500'>{item.day} days</span>
+              <Clock4 className='' />
+              <span className=''>{item.day} days</span>
             </div>
             <div className='flex items-center gap-2'>
-              <Users className='text-gray-500' />
-              <span className='text-gray-500'> 8-{item.maxNoPerson} people</span>
+              <Users className='' />
+              <span className=''> 8-{item.maxNoPerson} people</span>
             </div>
           </div>
 
-          <p className='text-gray-500'> Trip highlights:</p>
+          <p className=''> Trip highlights:</p>
 
           {/* Dynamic Hightlight using the .map()  */}
           <div className='flex gap-2 text-[12px]'>
             {item.hightLight.map((hightlight, index) => (
-              <span key={index} className='bg-gray-300 rounded-2xl px-1.5 py-1.5'>
+              <span key={index} className='bg-blue-300 rounded-2xl px-1.5 py-1.5'>
                 {hightlight}
               </span>
             ))}
@@ -129,17 +129,17 @@ const HeroCardComponent = ({
           <div className='flex justify-between  item-center gap-2'>
             <div className='flex flex-col items-start  '>
               <div className=' flex items-center gap-2 '>
-                <span className='text-4xl text-green-300 font-semibold'>
+                <span className='text-4xl text-primary font-semibold'>
                   From ${item.discountPrice}{' '}
                 </span>
-                <span className='text-gray-400 line-through'>${item.ogPrice}</span>
+                <span className=' line-through'>${item.ogPrice}</span>
               </div>
-              <span className='text-gray-400'>of from $99/month</span>
+              <span className=''>of from $99/month</span>
             </div>
 
             <button
               onClick={() => toggleItem( item)}
-              className='     w-max  rounded-[35px]  p-3 font-semibold bg-green-600 text-white text-[15px]'
+              className='     w-max  rounded-[35px]  p-3 font-semibold bg-primary  text-[15px] text-white'
             >
 
               {cartItems.some((cartItems) => cartItems.id === item.id) ? 'Remove from Card' : 'Add to Cart'}

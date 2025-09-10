@@ -25,7 +25,14 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 const NavbarComponent = () => {
     const { selectedIds, cartItems} = useStoreCart();
@@ -33,7 +40,7 @@ const NavbarComponent = () => {
     
  return (
    
-<nav className="bg-white text-black h-[80px] p-5  fixed top-0 left-0 right-0 z-50 shadow-md mb-4 ">
+<nav className="bg-primary text-black h-[80px] p-5  fixed top-0 left-0 right-0 z-70 shadow-md mb-4 ">
          <div className="container  mx-auto flex justify-between items-center">
              {/**left nav side */}
              <div className=" w-full flex items-center  justify-between md:justify-start md:space-x-5 lg:space-x-19 ">
@@ -105,13 +112,6 @@ const NavbarComponent = () => {
                      <Link href="" className="">
                          <IconWithBadge icon={Heart} itemCount={ selectedFavIds.length} iconClassName={'text-black hover:text-orange-500'}/></Link>
                 </li>
-                <li>
-                     <Link href="" className="hover:text-orange-500">
-                     <User /></Link>
-                 </li>
-                 <li>
-                     <ModeToggle/>
-                 </li>
                  <li>
                      <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -124,8 +124,10 @@ const NavbarComponent = () => {
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
+                 <DropdownMenuItem>
+                   {/* Sign In user */}
+                   <SignedOut><SignInButton /></SignedOut>
+                   {/* Sign In user */}
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
@@ -167,6 +169,13 @@ const NavbarComponent = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+                 </li>
+                <li>
+                     <Link href="" className="hover:text-orange-500">
+                     <UserButton /></Link>
+                 </li>
+                 <li>
+                     <ModeToggle/>
                  </li>
              </ul>
 </div>

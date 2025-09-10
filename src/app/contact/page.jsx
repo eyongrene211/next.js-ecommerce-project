@@ -8,6 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import React, { useRef }                                           from 'react';
 import emailjs                                                     from '@emailjs/browser';
 
+import { Button }                                                  from "@/components/ui/button"
+
+import { Loader2Icon }                                             from "lucide-react";
+
+
+
+
 
 const page = () => {
     const [isSending, setIsSending] = React.useState(false)
@@ -86,11 +93,16 @@ const page = () => {
                             className="w-full border peer border-gray-700 px-4 pt-5 pb-2 placeholder-transparent focus:border-blue-500 focus:ring-2 outline-none " name="user_message" />
                             <label className="absolute left-4 top-2.5 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-500  focus:border-blue-500 focus:ring-blue"> Your Message</label>
                         </div>
-                        <button
-                            type="submit"
-                            tabIndex={0}
-                            className="transform-none font-medium w-full rounded-[5px] flex justify-center items-center gap-5 bg-blue-600 text-white hover:bg-blue-700 py-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-send" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> Send Message</button> */}
+
+                        <Button variant="outline">Send Message</Button>
+                        
+
+                        {isSending ? <Button size="sm" className=' w-full' disabled>
+      <Loader2Icon className="animate-spin" />
+      Please wait
+    </Button> : <Button className={'w-full'} >Send Mail</Button> }
+                        
+                      
                         
 
                       

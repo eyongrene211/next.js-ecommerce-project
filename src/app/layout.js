@@ -2,6 +2,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer }    from "react-toastify";
 import { ThemeProvider }     from "@/components/ui/theme-provider";
+import {
+  ClerkProvider
+
+} from '@clerk/nextjs'
+import './globals.css'
 
 
 
@@ -28,21 +33,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <ClerkProvider>
+      
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-            <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+        >
+        {/* {children} */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
           >
-            {children}
-          </ThemeProvider>
-        <ToastContainer/>
+          {children}
+        </ThemeProvider>
+        <ToastContainer />
       </body>
     </html>
+          </ClerkProvider>
   );
 }

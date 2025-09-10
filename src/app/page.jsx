@@ -13,8 +13,22 @@ import { items }                           from "../../data/card_items";
 import { useState, useEffect }             from "react";
 import { hero_card_items }                 from "../../data/hero_card_items";
 import HeroSlider                          from "@/components/heroSlider/HeroSlider";
+import SearchFilter                        from "@/components/SearchFilter/SearchFilter";
+import { HeroScroller }                    from "@/components/HeroScroller/HeroScroller";
 //initializing nextJs page
 const page = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  // const filteredEvent = searchTerm.length > 0 ? hero_card_items.filter((item) => { item.title.toLowerCase().includes(searchTerm.toLowerCase()) }) : hero_card_items;
+
+  const filteredEvent = searchTerm.length > 0 
+  ? hero_card_items.filter(item =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  : hero_card_items;
+
+  
+  
+  // const [newFilteredEvent, setnewFilteredEvent] = useState(hero_card_items);
 
   // const [items, setItems] = useState([]); // State to hold array of item from the API
   // const [isLoading, setIsLoading] = useState(true); // state to manage the loading status
@@ -65,7 +79,8 @@ const page = () => {
     <>
       <NavbarComponent />
       {/* <HeroComponent showButton bgImage="home-bg" title="Welcome Here" description="This is my homepage" /> */}
-      <HeroSlider/>
+      {/* <HeroSlider /> */}
+      <HeroScroller bgImage={'home-bg'}/>
 
       {/* main body section */}
 
@@ -75,11 +90,30 @@ const page = () => {
         <h3> MOST POPULAR ADVENTURE</h3>
         </div>
         <h1 className="text-4xl font-semibold">Adventure That Will Change  Your Life</h1>
-        <p className= " text-center">From ancient ruins to pristine beaches, discover the destinations that <br/> our travelers can't stop talking about.</p>
+        <p className=" text-center">From ancient ruins to pristine beaches, discover the destinations that <br /> our travelers can't stop talking about.</p>
+         <div className="flex w-[600px] mt-5 mb-5 border rounded-lg overflow-hidden">
+                <input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    type="text"
+                    className="w-full py-3"
+                    placeholder="Search Your Destination"
+                />
+                <button
+                    className="bg-primary p-3 rounded-r-lg text-white font-semibold"
+                    onClick={() => {''}}
+
+                // ✅ only runs when clicked
+                >
+                    Search
+                </button>
+            </div>
+            <h2>{searchTerm}</h2>
 
         <div className=" h-full flex-wrap flex items-center gap-3 m-2 justify-center  ">
                 {/* <HeroCardComponent /> */}
-               { hero_card_items.map((item) => (
+          {filteredEvent.map((item) => (
+                 
                 <HeroCardComponent 
                   key={item.id}
                   item={item}
